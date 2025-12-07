@@ -174,10 +174,10 @@ function revealSecret() {
         </p>
         <p style="margin-top: 20px;">
             No matter how many questions you got right, the real secret is this: you are one of the best people I know.
-            I treasure our memories, from the silly trips to the late-night talks.
-            Thanks for being you. Have an amazing year ahead!
+            I treasure our memories, from the silly trips.late-night talks to the time we spend at hostel.
+            Thanks for being you. Have an amazing year ahead!Hope you like this
             <br>
-            Love, Ayush
+            Your Friend, Ayush[King]
         </p>
     `;
     
@@ -222,4 +222,5 @@ noButton.addEventListener('click', () => {
 
 
 // --- 5. Initialize the Game ---
+
 loadQuestion();
