@@ -1,0 +1,88 @@
+body {
+    font-family: 'Arial', sans-serif;
+    background-color: #fce4ec; /* Light Pink Background */
+    color: #333;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh;
+    margin: 0;
+    text-align: center;
+}
+
+#bday-message {
+    color: #ff4081; /* Bright Pink */
+    margin-bottom: 20px;
+    font-size: 2.5em;
+    animation: pulse 1.5s infinite alternate; /* Simple fun animation */
+}
+
+@keyframes pulse {
+    from { transform: scale(1); }
+    to { transform: scale(1.05); }
+}
+
+#game-container {
+    background-color: #ffffff;
+    padding: 30px;
+    border-radius: 15px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+    width: 90%;
+    max-width: 600px;
+}
+
+#options-container button,
+#next-button,
+#secret-button,
+#more-options button {
+    width: 100%;
+    padding: 15px;
+    margin: 10px 0;
+    border: none;
+    border-radius: 8px;
+    font-size: 1.1em;
+    cursor: pointer;
+    transition: background-color 0.3s, transform 0.1s;
+}
+
+#options-container button {
+    background-color: #e0f7fa; /* Light Blue Option Button */
+    color: #00796b;
+}
+
+#options-container button:hover {
+    background-color: #b2ebf2;
+}
+
+.correct {
+    background-color: #a5d6a7 !important; /* Green */
+    color: white;
+}
+
+.incorrect {
+    background-color: #ef9a9a !important; /* Red */
+    color: white;
+}
+
+#secret-button {
+    background-color: #ff9800; /* Orange */
+    color: white;
+    font-weight: bold;
+    font-size: 1.2em;
+}
+
+#secret-button:hover {
+    background-color: #fb8c00;
+    transform: scale(1.02);
+}
+
+#yes-button {
+    background-color: #4CAF50;
+    color: white;
+}
+
+#no-button {
+    background-color: #f44336;
+    color: white;
+}
