@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Happy Birthday, Soham! - The Fun Quiz</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <header>
+        <h1 id="bday-message">Happy Birthday, Soham! 🎂</h1>
+    </header>
+
+    <div id="game-container">
+        
+        <div id="quiz-area">
+            <h2 id="question-text"></h2>
+            <div id="options-container">
+                </div>
+            <p id="feedback-message" style="color: #f44336; font-weight: bold; margin-top: 15px; display: none;"></p>
+            <button id="next-button" style="display: none;">Next Question</button>
+        </div>
+
+        <div id="final-results" style="display: none;">
+            <h2>Quiz Completed!</h2>
+            <p>Your Final Score: <span id="score-display">0</span> / 7</p> 
+            <button id="secret-button">Wanna Hear a Secret? 🤫</button>
+        </div>
+
+        <div id="secret-message-box" style="display: none;">
+            <p id="secret-text"></p>
+            <div id="more-options">
+                <p>Wanna hear more?</p>
+                <button id="yes-button">Yes!</button>
+                <button id="no-button">No 🥲</button>
+            </div>
+        </div>
+
+    </div>
+
+    <div id="emoji-container"></div>
+
+    <audio id="happy-track" src="happy_audio.mp3" loop></audio>
+    <audio id="secret-track" src="secret_audio.mp3" loop></audio>
+    
+    <script src="script.js"></script>
+</body>
+</html>
