@@ -1,7 +1,7 @@
 // --- 1. Define Questions (Now 7 Questions) ---
 const questions = [
     {
-        question: "What is Soham's all-time favourite flavor of ice cream?",
+        question: "What is Sambit's all-time favourite flavor of ice cream?",
         options: ["Chocolate Chip", "Vanilla", "Pista", "Butterscotch"],
         correctAnswer: "Chocolate Chip"
     },
@@ -11,9 +11,9 @@ const questions = [
         correctAnswer: "2022"
     },
     {
-        question: "If Soham could only watch one movie for the rest of his life, what would it be?",
-        options: ["The Dark Knight", "Inception", "Interstellar", "House Of The dragon"],
-        correctAnswer: "The Dark Knight"
+        question: "If Sambit could only watch one k-drama for the rest of his life, what would it be?",
+        options: ["Put head on my shoulder", "Buisness proposal", "When life gives you tangerines", "Crash landing you"],
+        correctAnswer: "Buisness proposal"
     },
     {
         question: "What is the one subject Soham secretly hates?",
@@ -26,20 +26,20 @@ const questions = [
         correctAnswer: "Mikasa Ackerman"
     },
     {
-        question: "What is Soham's favourite thing to drink during study sessions?",
+        question: "What is Sambit's favourite thing to drink during study sessions?",
         options: ["Coffee", "Tea", "Energy Drink", "Water", "Tsunade's Milk"],
         correctAnswer: "water"
     },
     {
         question: "Which valorant character you look alike? HINT:When you wear glasses or search it",
-        options: ["Omen", "Chamber", "Sova", "Cypher"],
-        correctAnswer: "Chamber"
+        options: ["Viper", "Chamber", "Sova", "Cypher"],
+        correctAnswer: "Viper"
     }
 ];
 
 const MAX_SCORE = questions.length; 
 const WRONG_MESSAGES = [
-    "Oops! Close, but Soham would strongly disagree with that one. Try the next!",
+    "Oops! Close, but Sambit would strongly disagree with that one. Try the next!",
     "Incorrect! That's not the right answer, but don't worry, keep going!",
     "Hmm, I think you missed a detail! That wasn't quite right.",
     "Not quite! Looks like someone needs a refresher on Soham facts. 😉"
@@ -170,7 +170,7 @@ function revealSecret() {
     // ***CUSTOMIZE THIS SECRET MESSAGE!***
     secretText.innerHTML = `
         <p style="font-size: 1.5em; color: #ff4081; font-weight: bold;">
-            Dear Soham, Happy Birthday! 
+            Dear Sambit, Happy Belated Birthday! 
         </p>
         <p style="margin-top: 20px;">
             No matter how many questions you got right, the real secret is this: you are one of the best people I know.
@@ -224,3 +224,4 @@ noButton.addEventListener('click', () => {
 // --- 5. Initialize the Game ---
 
 loadQuestion();
+
