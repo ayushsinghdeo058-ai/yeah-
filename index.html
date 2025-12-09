@@ -3,48 +3,33 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Happy Belated Birthday, Sambit! - The Fun Quiz</title>
-    <link rel="stylesheet" href="style.css">
-</head>
+    <title>Birthday Surprise!</title>
+    <link rel="stylesheet" href="style.css"> </head>
 <body>
 
-    <header>
-        <h1 id="bday-message">Happy Birthday, Sambit! 🎂</h1>
-    </header>
+    <audio id="bdayAudio" src="bday_song.mp3" preload="auto"></audio>
 
-    <div id="game-container">
-        
-        <div id="quiz-area">
-            <h2 id="question-text"></h2>
-            <div id="options-container">
-                </div>
-            <p id="feedback-message" style="color: #f44336; font-weight: bold; margin-top: 15px; display: none;"></p>
-            <button id="next-button" style="display: none;">Next Question</button>
-        </div>
+    <div class="initial-container">
+        <img src="your_custom_image.jpg" alt="Initial Interference Image" class="main-image">
 
-        <div id="final-results" style="display: none;">
-            <h2>Quiz Completed!</h2>
-            <p>Your Final Score: <span id="score-display">0</span> / 7</p> 
-            <button id="secret-button">Wanna Hear a Secret? 🤫</button>
-        </div>
-
-        <div id="secret-message-box" style="display: none;">
-            <p id="secret-text"></p>
-            <div id="more-options">
-                <p>Wanna hear more?</p>
-                <button id="yes-button">Yes!</button>
-                <button id="no-button">No 🥲</button>
-            </div>
-        </div>
-
+        <button id="openMessageButton" class="special-font-btn">
+            someone has something to say😏
+        </button>
     </div>
 
-    <div id="emoji-container"></div>
+    <div id="messagePopup" class="popup-overlay">
+        <div class="popup-content">
+            <h1 class="popup-header">Happy Birthday, man 😌🎉</h1>
+            <p class="popup-body">
+                One more year of dealing with Sumi… damn, you really don’t value your peace, do you? 😭
+                <br><br>
+                But respect, because only a brave mf like you could handle her drama levels 💀
+                <br><br>
+                Have a blast, you chaos-loving legend.
+            </p>
+            <button id="closeMessageButton" class="close-btn">Got it!</button>
+        </div>
+        </div>
 
-    <audio id="happy-track" src="happy_audio.mp3" loop></audio>
-    <audio id="secret-track" src="secret_audio.mp3" loop></audio>
-    
-    <script src="script.js"></script>
-</body>
-
+    <script src="script.js"></script> </body>
 </html>
