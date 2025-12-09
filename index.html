@@ -1,0 +1,266 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Birthday Surprise!</title>
+    <style>
+        /* CSS STYLES */
+        @import url('https://fonts.googleapis.com/css2?family=Pacifico&display=swap'); /* For Button Font */
+        @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400..900;1,400..900&display=swap'); /* For Message Body Font */
+
+        /* Base Styling */
+        body {
+            margin: 0;
+            font-family: sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            background-color: #f0f0f0;
+            overflow: hidden;
+        }
+
+        /* Initial Container */
+        .initial-container {
+            text-align: center;
+            /* Center the button on the page */
+            display: flex; 
+            justify-content: center;
+            align-items: center;
+            width: 100vw;
+            height: 100vh;
+        }
+
+        /* Custom Button Styling */
+        .special-font-btn {
+            padding: 15px 30px;
+            font-family: 'Pacifico', cursive; /* Applied font */
+            font-size: 24px;
+            color: #fff;
+            background: linear-gradient(45deg, #ff6b6b, #ffa07a);
+            border: none;
+            border-radius: 50px;
+            cursor: pointer;
+            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3);
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
+
+        .special-font-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.4);
+        }
+
+        /* Popup Overlay (The colourful background) */
+        .popup-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: radial-gradient(circle at center, #ffecb3, #ffcc80, #ff9999);
+            display: none;
+            justify-content: center;
+            align-items: center;
+            z-index: 10;
+        }
+
+        /* Popup Content Box */
+        .popup-content {
+            background-color: white;
+            padding: 40px;
+            border-radius: 20px;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.4);
+            text-align: center;
+            max-width: 90%;
+            min-width: 350px;
+            position: relative;
+            z-index: 15;
+            animation: fadeIn 0.5s ease-out;
+            border-bottom: 5px solid #e91e63;
+        }
+
+        .popup-header {
+            color: #e91e63;
+            font-size: 32px;
+            margin-bottom: 20px;
+        }
+
+        .popup-body {
+            /* STYLISH FONT */
+            font-family: 'Playfair Display', serif; 
+            font-size: 22px; 
+            line-height: 1.8;
+            color: #333;
+            font-weight: 500;
+        }
+
+        /* Floating Graphics (for both text emojis and custom images) */
+        .floating-graphic {
+            position: absolute;
+            font-size: 30px; /* Default size for text emojis */
+            width: 58px;    /* Default size for custom images */
+            height: 58px;
+            object-fit: contain;
+            animation: floatUp 8s linear infinite;
+            opacity: 0;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: scale(0.9); }
+            to { opacity: 1; transform: scale(1); }
+        }
+
+        @keyframes floatUp {
+            0% {
+                transform: translateY(100vh) scale(0.5);
+                opacity: 0;
+            }
+            10% {
+                opacity: 1;
+            }
+            80% {
+                opacity: 1;
+            }
+            100% {
+                transform: translateY(-10vh) scale(1.2);
+                opacity: 0;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <audio id="bdayAudio" src="bday_song.mp3" preload="auto"></audio>
+
+    <div class="initial-container">
+        <button id="openMessageButton" class="special-font-btn">
+            someone has something to say😏
+        </button>
+    </div>
+
+    <div id="messagePopup" class="popup-overlay">
+        <div class="popup-content">
+            <h1 class="popup-header">Happy Fucking Birthday, man 😌🎉</h1>
+            <p class="popup-body">
+                One more year of dealing with Sumi… damn,Fucker you really don’t value your peace asshole, do you? 😭
+                <br><br>
+                But respect, because only a brave motherfucker,shitass like you could handle her drama levels 💀
+                Hope you enjoy your last peace day because your rest life is full of chaos. You hope less bastard
+            </p>
+        </div>
+    </div>
+
+    <script>
+        // JAVASCRIPT LOGIC
+        document.addEventListener('DOMContentLoaded', () => {
+            const openBtn = document.getElementById('openMessageButton');
+            const popup = document.getElementById('messagePopup');
+            const audio = document.getElementById('bdayAudio');
+            const emojiContainer = document.getElementById('messagePopup'); 
+
+            // --- FLOATING GRAPHICS LIST ---
+            // 1. STANDARD EMOJIS (text)
+            // 2. CUSTOM IMAGES (Replace the placeholders below with your actual file names, e.g., 'my_icon.png')
+            const graphics = [
+                '🎂', '🥳', '🎁', '🎉', '🎈', '🍾', '🎊', '🍰', '1.jpeg', '2.jpeg', '3.jpeg' // Standard Emojis
+                // 'custom_icon_1.png', // <-- UNCOMMENT and REPLACE these with your image file names
+                // 'custom_icon_2.png',
+                // 'custom_icon_3.gif'
+            ];
+
+            let emojiInterval;
+
+            /**
+             * Creates and animates a single floating graphic (image or emoji).
+             */
+            function createFloatingGraphic() {
+                const graphicSource = graphics[Math.floor(Math.random() * graphics.length)];
+
+                let element;
+
+                if (graphicSource.includes('.')) { // It's an image file
+                    element = document.createElement('img');
+                    element.src = graphicSource;
+                    element.classList.add('floating-graphic');
+                } else { // It's a standard Unicode emoji
+                    element = document.createElement('span');
+                    element.textContent = graphicSource;
+                    element.classList.add('floating-graphic'); 
+                    // Override font-size from CSS for text emojis
+                    element.style.fontSize = '30px'; 
+                }
+
+                // Apply shared animation properties
+                element.style.left = `${Math.random() * 100}vw`;
+                element.style.animationDelay = `${Math.random() * 4}s`;
+                element.style.animationDuration = `${6 + Math.random() * 4}s`;
+
+                emojiContainer.appendChild(element);
+
+                element.addEventListener('animationend', () => {
+                    element.remove();
+                });
+            }
+
+            /**
+             * Starts the continuous stream of floating graphics.
+             */
+            function startEmojiStream() {
+                if (!emojiInterval) {
+                    emojiInterval = setInterval(createFloatingGraphic, 300); 
+                }
+            }
+
+            /**
+             * Function to close the popup and stop the music
+             */
+            function closePopup() {
+                popup.style.display = 'none';
+                audio.pause();
+                audio.currentTime = 0; 
+                clearInterval(emojiInterval); // Stop the emoji creation
+                emojiInterval = null;
+                document.querySelector('.initial-container').style.display = 'flex'; // Show the button again
+            }
+
+
+            // --- Event Listeners ---
+
+            // 1. Show the Popup and Start the Music/Graphics
+            openBtn.addEventListener('click', () => {
+                const initialContainer = document.querySelector('.initial-container');
+                initialContainer.style.display = 'none';
+                popup.style.display = 'flex';
+
+                // Attempt to play the audio
+                audio.loop = true; 
+                const playPromise = audio.play();
+
+                if (playPromise !== undefined) {
+                    playPromise.catch(error => {
+                        console.log("Autoplay prevented:", error);
+                    });
+                }
+                
+                startEmojiStream();
+            });
+
+            // 2. Close Popup by clicking outside the message box (on the overlay)
+            popup.addEventListener('click', (event) => {
+                // Check if the click target is the overlay itself (and not the content box)
+                if (event.target === popup) {
+                    closePopup();
+                }
+            });
+
+            // 3. Close Popup using the Escape key
+            document.addEventListener('keydown', (event) => {
+                if (event.key === 'Escape' && popup.style.display === 'flex') {
+                    closePopup();
+                }
+            });
+        });
+    </script>
+</body>
+</html>
